@@ -1,0 +1,6 @@
+name,sku,description,category,price,color,size,image
+经典圆领T恤,TS-001,100%纯棉舒适面料，经典款式,T恤,29.99,"白色,黑色,藏青色","S,M,L,XL,2XL",https://example.com/images/ts001.jpg
+商务休闲衬衫,SH-001,高品质棉混纺面料，适合商务场合,衬衫,49.99,"白色,浅蓝色","S,M,L,XL",https://example.com/images/sh001.jpg
+修身牛仔裤,JN-001,弹力牛仔面料，修身版型,牛仔裤,59.99,"深蓝,浅蓝,黑色","28,29,30,31,32,33,34",https://example.com/images/jn001.jpg
+连帽卫衣,HD-001,加绒内里，保暖舒适,卫衣,39.99,"黑色,灰色,藏青色","S,M,L,XL,2XL",https://example.com/images/hd001.jpg
+运动短裤,SP-001,速干面料，透气舒适,运动裤,24.99,"黑色,灰色,藏青色","S,M,L,XL",https://example.com/images/sp001.jpg
