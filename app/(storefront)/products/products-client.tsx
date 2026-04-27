@@ -24,13 +24,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -139,29 +133,7 @@ const FilterSidebar = ({
         </nav>
       </div>
 
-      <div className="pt-4 border-t border-border">
-        <h4 className="text-sm font-medium text-muted-foreground mb-3">面料</h4>
-        <Select>
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="全部面料" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">全部面料</SelectItem>
-            <SelectItem value="cotton">纯棉</SelectItem>
-            <SelectItem value="polyester">涤纶</SelectItem>
-            <SelectItem value="blend">混纺</SelectItem>
-            <SelectItem value="fleece">抓绒</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
 
-      <div className="mt-6 pt-4 border-t border-border">
-        <div className="rounded-lg bg-accent/50 p-4 text-center">
-          <p className="text-sm font-medium text-foreground mb-1">起订量</p>
-          <p className="text-2xl font-bold text-primary">50件</p>
-          <p className="text-xs text-muted-foreground mt-1">每款</p>
-        </div>
-      </div>
     </aside>
   )
 }
