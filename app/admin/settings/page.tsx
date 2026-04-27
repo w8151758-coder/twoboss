@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Field, FieldLabel, FieldGroup } from "@/components/ui/field"
-import { Settings, Building2, Bell, Shield, Upload, Image, Globe, Loader2, Trash2, Save, MessageCircle } from "lucide-react"
+import { Settings, Building2, Bell, Shield, Upload, Image, Globe, Loader2, Trash2, Save, MessageCircle, Mail, Link2 } from "lucide-react"
 import { useI18n } from "@/lib/i18n"
 import { toast } from "sonner"
 import NextImage from "next/image"
@@ -18,6 +18,17 @@ interface SiteSettings {
   company_phone: string
   company_address: string
   whatsapp_number: string
+  // WhatsApp Business API
+  whatsapp_api_token: string
+  whatsapp_phone_id: string
+  whatsapp_business_id: string
+  // 邮件SMTP配置
+  email_smtp_host: string
+  email_smtp_port: string
+  email_smtp_user: string
+  email_smtp_pass: string
+  email_from_address: string
+  email_from_name: string
 }
 
 export default function SettingsPage() {
@@ -30,6 +41,15 @@ export default function SettingsPage() {
     company_phone: "",
     company_address: "",
     whatsapp_number: "",
+    whatsapp_api_token: "",
+    whatsapp_phone_id: "",
+    whatsapp_business_id: "",
+    email_smtp_host: "",
+    email_smtp_port: "587",
+    email_smtp_user: "",
+    email_smtp_pass: "",
+    email_from_address: "",
+    email_from_name: "",
   })
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
@@ -89,6 +109,30 @@ export default function SettingsPage() {
     confirmPassword: locale === "zh" ? "确认新密码" : "Confirm Password",
     confirmPasswordPlaceholder: locale === "zh" ? "请再次输入新密码" : "Confirm new password",
     changePassword: locale === "zh" ? "修改密码" : "Change Password",
+    integrations: locale === "zh" ? "集成配置" : "Integrations",
+    integrationsDesc: locale === "zh" ? "配置WhatsApp Business API和邮件服务" : "Configure WhatsApp Business API and email service",
+    whatsappApi: locale === "zh" ? "WhatsApp Business API" : "WhatsApp Business API",
+    whatsappApiDesc: locale === "zh" ? "配置WhatsApp Business API以启用自动消息功能" : "Configure WhatsApp Business API for automated messaging",
+    apiToken: locale === "zh" ? "API Token" : "API Token",
+    apiTokenPlaceholder: locale === "zh" ? "输入WhatsApp API Token" : "Enter WhatsApp API Token",
+    phoneId: locale === "zh" ? "Phone Number ID" : "Phone Number ID",
+    phoneIdPlaceholder: locale === "zh" ? "输入Phone Number ID" : "Enter Phone Number ID",
+    businessId: locale === "zh" ? "Business Account ID" : "Business Account ID",
+    businessIdPlaceholder: locale === "zh" ? "输入Business Account ID" : "Enter Business Account ID",
+    emailSmtp: locale === "zh" ? "邮件服务 (SMTP)" : "Email Service (SMTP)",
+    emailSmtpDesc: locale === "zh" ? "配置SMTP服务以发送邮件通知" : "Configure SMTP for email notifications",
+    smtpHost: locale === "zh" ? "SMTP服务器" : "SMTP Host",
+    smtpHostPlaceholder: locale === "zh" ? "例如: smtp.gmail.com" : "e.g. smtp.gmail.com",
+    smtpPort: locale === "zh" ? "端口" : "Port",
+    smtpUser: locale === "zh" ? "用户名" : "Username",
+    smtpUserPlaceholder: locale === "zh" ? "SMTP用户名或邮箱" : "SMTP username or email",
+    smtpPass: locale === "zh" ? "密码" : "Password",
+    smtpPassPlaceholder: locale === "zh" ? "SMTP密码或应用专用密码" : "SMTP password or app password",
+    fromEmail: locale === "zh" ? "发件人邮箱" : "From Email",
+    fromEmailPlaceholder: locale === "zh" ? "发送邮件使用的邮箱地址" : "Email address for sending",
+    fromName: locale === "zh" ? "发件人名称" : "From Name",
+    fromNamePlaceholder: locale === "zh" ? "显示的发件人名称" : "Displayed sender name",
+    testConnection: locale === "zh" ? "测试连接" : "Test Connection",
   }
 
   // 加载设置
@@ -450,6 +494,131 @@ export default function SettingsPage() {
                 <Input type="email" placeholder={t.notificationEmailPlaceholder} />
               </Field>
             </FieldGroup>
+          </CardContent>
+        </Card>
+
+        {/* 集成配置 */}
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Link2 className="h-5 w-5 text-primary" />
+              <CardTitle>{t.integrations}</CardTitle>
+            </div>
+            <CardDescription>{t.integrationsDesc}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* WhatsApp Business API */}
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="p-2 bg-[#25D366]/10 rounded-lg">
+                  <MessageCircle className="h-5 w-5 text-[#25D366]" />
+                </div>
+                <div>
+                  <h4 className="font-medium">{t.whatsappApi}</h4>
+                  <p className="text-sm text-muted-foreground">{t.whatsappApiDesc}</p>
+                </div>
+              </div>
+              <FieldGroup>
+                <Field>
+                  <FieldLabel>{t.apiToken}</FieldLabel>
+                  <Input 
+                    type="password"
+                    value={settings.whatsapp_api_token}
+                    onChange={(e) => setSettings(prev => ({ ...prev, whatsapp_api_token: e.target.value }))}
+                    placeholder={t.apiTokenPlaceholder}
+                  />
+                </Field>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <Field>
+                    <FieldLabel>{t.phoneId}</FieldLabel>
+                    <Input 
+                      value={settings.whatsapp_phone_id}
+                      onChange={(e) => setSettings(prev => ({ ...prev, whatsapp_phone_id: e.target.value }))}
+                      placeholder={t.phoneIdPlaceholder}
+                    />
+                  </Field>
+                  <Field>
+                    <FieldLabel>{t.businessId}</FieldLabel>
+                    <Input 
+                      value={settings.whatsapp_business_id}
+                      onChange={(e) => setSettings(prev => ({ ...prev, whatsapp_business_id: e.target.value }))}
+                      placeholder={t.businessIdPlaceholder}
+                    />
+                  </Field>
+                </div>
+              </FieldGroup>
+            </div>
+
+            {/* 邮件SMTP配置 */}
+            <div className="pt-6 border-t">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Mail className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-medium">{t.emailSmtp}</h4>
+                  <p className="text-sm text-muted-foreground">{t.emailSmtpDesc}</p>
+                </div>
+              </div>
+              <FieldGroup>
+                <div className="grid gap-4 md:grid-cols-3">
+                  <Field className="md:col-span-2">
+                    <FieldLabel>{t.smtpHost}</FieldLabel>
+                    <Input 
+                      value={settings.email_smtp_host}
+                      onChange={(e) => setSettings(prev => ({ ...prev, email_smtp_host: e.target.value }))}
+                      placeholder={t.smtpHostPlaceholder}
+                    />
+                  </Field>
+                  <Field>
+                    <FieldLabel>{t.smtpPort}</FieldLabel>
+                    <Input 
+                      value={settings.email_smtp_port}
+                      onChange={(e) => setSettings(prev => ({ ...prev, email_smtp_port: e.target.value }))}
+                      placeholder="587"
+                    />
+                  </Field>
+                </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <Field>
+                    <FieldLabel>{t.smtpUser}</FieldLabel>
+                    <Input 
+                      value={settings.email_smtp_user}
+                      onChange={(e) => setSettings(prev => ({ ...prev, email_smtp_user: e.target.value }))}
+                      placeholder={t.smtpUserPlaceholder}
+                    />
+                  </Field>
+                  <Field>
+                    <FieldLabel>{t.smtpPass}</FieldLabel>
+                    <Input 
+                      type="password"
+                      value={settings.email_smtp_pass}
+                      onChange={(e) => setSettings(prev => ({ ...prev, email_smtp_pass: e.target.value }))}
+                      placeholder={t.smtpPassPlaceholder}
+                    />
+                  </Field>
+                </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <Field>
+                    <FieldLabel>{t.fromEmail}</FieldLabel>
+                    <Input 
+                      type="email"
+                      value={settings.email_from_address}
+                      onChange={(e) => setSettings(prev => ({ ...prev, email_from_address: e.target.value }))}
+                      placeholder={t.fromEmailPlaceholder}
+                    />
+                  </Field>
+                  <Field>
+                    <FieldLabel>{t.fromName}</FieldLabel>
+                    <Input 
+                      value={settings.email_from_name}
+                      onChange={(e) => setSettings(prev => ({ ...prev, email_from_name: e.target.value }))}
+                      placeholder={t.fromNamePlaceholder}
+                    />
+                  </Field>
+                </div>
+              </FieldGroup>
+            </div>
           </CardContent>
         </Card>
 
