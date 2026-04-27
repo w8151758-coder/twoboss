@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/server"
 import { TrackingScripts } from "@/components/tracking-scripts"
 import { StorefrontI18nProvider } from "@/lib/i18n/storefront-context"
 import { LOCALE_COOKIE, defaultLocale, locales, type Locale, isRTL } from "@/lib/i18n/config"
+import { DynamicFavicon } from "@/components/dynamic-favicon"
 
 // 允许部分静态生成，5分钟重新验证
 export const revalidate = 300
@@ -44,6 +45,7 @@ export default async function StorefrontLayout({
     <StorefrontI18nProvider initialLocale={initialLocale}>
       <CartProvider>
         <TrackingScripts />
+        <DynamicFavicon />
         <div className="flex min-h-screen flex-col" dir={rtl ? 'rtl' : 'ltr'}>
           <Header user={profile} />
           <main className="flex-1">{children}</main>
