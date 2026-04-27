@@ -187,7 +187,7 @@ function LoginForm() {
       <CardFooter className="flex flex-col gap-4 pt-2">
         <p className="text-center text-sm text-muted-foreground">
           还没有账户？{" "}
-          <Link href="/auth/register" className="text-primary hover:underline">
+          <Link href="/auth/sign-up" className="text-primary hover:underline">
             立即注册
           </Link>
         </p>
