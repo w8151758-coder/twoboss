@@ -1,0 +1,53 @@
+import { cookies } from "next/headers"
+import { Header } from "@/components/storefront/header"
+import { Footer } from "@/components/storefront/footer"
+import { CartProvider } from "@/lib/cart-context"
+import { createClient } from "@/lib/supabase/server"
+import { TrackingScripts } from "@/components/tracking-scripts"
+import { StorefrontI18nProvider } from "@/lib/i18n/storefront-context"
+import { LOCALE_COOKIE, defaultLocale, locales, type Locale, isRTL } from "@/lib/i18n/config"
+
+// 确保页面是动态渲染的
+export const dynamic = 'force-dynamic'
+
+export default async function StorefrontLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const supabase = await createClient()
+  
+  const { data: { user } } = await supabase.auth.getUser()
+  
+  let profile = null
+  
+  if (user) {
+    // Get user profile
+    const { data: profileData } = await supabase
+      .from("profiles")
+      .select("id, email, name, company_name, whatsapp, country, role")
+      .eq("id", user.id)
+      .single()
+    
+    profile = profileData
+  }
+
+  // Get locale from cookie
+  const cookieStore = await cookies()
+  const localeCookie = cookieStore.get(LOCALE_COOKIE)?.value as Locale | undefined
+  const initialLocale = localeCookie && locales.includes(localeCookie) ? localeCookie : defaultLocale
+  const rtl = isRTL(initialLocale)
+
+  return (
+    <StorefrontI18nProvider initialLocale={initialLocale}>
+      <CartProvider>
+        <TrackingScripts />
+        <div className="flex min-h-screen flex-col" dir={rtl ? 'rtl' : 'ltr'}>
+          <Header user={profile} />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
+      </CartProvider>
+    </StorefrontI18nProvider>
+  )
+}
