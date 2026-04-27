@@ -8,18 +8,24 @@ export const CACHE_TAGS = {
   blogPosts: 'blog-posts',
 } as const
 
-// Cache durations (in seconds)
+// Cache durations (in seconds) - 更激进的缓存
 export const CACHE_DURATION = {
-  short: 60,        // 1 minute
-  medium: 300,      // 5 minutes
+  short: 120,       // 2 minutes
+  medium: 600,      // 10 minutes  
   long: 3600,       // 1 hour
   day: 86400,       // 24 hours
 } as const
 
-// Use admin client for cached queries to bypass cookie access
-const getSupabase = () => createAdminClient()
+// Singleton admin client
+let adminClient: ReturnType<typeof createAdminClient> | null = null
+const getSupabase = () => {
+  if (!adminClient) {
+    adminClient = createAdminClient()
+  }
+  return adminClient
+}
 
-// Cached function to get all categories - heavily cached
+// Cached function to get all categories - heavily cached (1 hour)
 export const getCachedCategories = unstable_cache(
   async () => {
     const supabase = getSupabase()
@@ -47,6 +53,9 @@ export const getCachedProducts = unstable_cache(
     limit?: number
   }) => {
     const supabase = getSupabase()
+    
+    // Build cache key from options
+    const cacheKey = JSON.stringify(options || {})
     
     // Simplified select for list view - only essential fields
     let query = supabase
@@ -202,5 +211,39 @@ export const getCachedProductCounts = unstable_cache(
   {
     revalidate: CACHE_DURATION.long,
     tags: [CACHE_TAGS.products, CACHE_TAGS.categories],
+  }
+)
+
+// Cached dashboard stats
+export const getCachedDashboardStats = unstable_cache(
+  async () => {
+    const supabase = getSupabase()
+
+    const [
+      { count: productCount },
+      { count: inquiryCount },
+      { count: quoteCount },
+      { count: orderCount },
+      { count: customerCount },
+    ] = await Promise.all([
+      supabase.from("products").select("*", { count: "exact", head: true }),
+      supabase.from("inquiries").select("*", { count: "exact", head: true }).eq("status", "new"),
+      supabase.from("quotes").select("*", { count: "exact", head: true }).eq("status", "draft"),
+      supabase.from("orders").select("*", { count: "exact", head: true }),
+      supabase.from("profiles").select("*", { count: "exact", head: true }).eq("role", "customer"),
+    ])
+
+    return {
+      productCount: productCount || 0,
+      inquiryCount: inquiryCount || 0,
+      quoteCount: quoteCount || 0,
+      orderCount: orderCount || 0,
+      customerCount: customerCount || 0,
+    }
+  },
+  ['dashboard-stats'],
+  {
+    revalidate: CACHE_DURATION.short,
+    tags: ['dashboard'],
   }
 )

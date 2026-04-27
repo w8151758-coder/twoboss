@@ -7,22 +7,25 @@ import { TrackingScripts } from "@/components/tracking-scripts"
 import { StorefrontI18nProvider } from "@/lib/i18n/storefront-context"
 import { LOCALE_COOKIE, defaultLocale, locales, type Locale, isRTL } from "@/lib/i18n/config"
 
-// 确保页面是动态渲染的
-export const dynamic = 'force-dynamic'
+// 允许部分静态生成，5分钟重新验证
+export const revalidate = 300
 
 export default async function StorefrontLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const supabase = await createClient()
+  // Parallel fetch user and locale
+  const [supabase, cookieStore] = await Promise.all([
+    createClient(),
+    cookies()
+  ])
   
   const { data: { user } } = await supabase.auth.getUser()
   
   let profile = null
   
   if (user) {
-    // Get user profile
     const { data: profileData } = await supabase
       .from("profiles")
       .select("id, email, name, company_name, whatsapp, country, role")
@@ -33,7 +36,6 @@ export default async function StorefrontLayout({
   }
 
   // Get locale from cookie
-  const cookieStore = await cookies()
   const localeCookie = cookieStore.get(LOCALE_COOKIE)?.value as Locale | undefined
   const initialLocale = localeCookie && locales.includes(localeCookie) ? localeCookie : defaultLocale
   const rtl = isRTL(initialLocale)
