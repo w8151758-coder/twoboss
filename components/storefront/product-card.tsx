@@ -203,8 +203,7 @@ export function ProductCard({ product, showQuickAdd = false }: ProductCardProps)
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAMH/8QAHxAAAgEEAgMAAAAAAAAAAAAAAQIDAAQRIQUSMUFR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAZEQADAAMAAAAAAAAAAAAAAAAAAQIDITH/2gAMAwEAAhEDEEA/AK8VdWvGXU0dyHt45GVGjjCsSNAHZznNSoqtKSRpQ0j/2Q=="
+              unoptimized={mainImageUrl === "/placeholder-product.jpg"}
             />
             {/* Badges */}
             <div className="absolute left-1.5 top-1.5 sm:left-2 sm:top-2 flex flex-col gap-0.5 sm:gap-1">
