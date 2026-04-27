@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { ShoppingCart, User, Search, Menu, X, Package, MessageCircle, FileText, ClipboardList, History, Heart, Settings } from "lucide-react"
 import { useState } from "react"
@@ -19,6 +20,7 @@ import { cn } from "@/lib/utils"
 import { useCart } from "@/lib/cart-context"
 import { useStorefrontI18n } from "@/lib/i18n/storefront-context"
 import { LanguageSwitcher } from "./language-switcher"
+import { useSiteSettings } from "@/lib/hooks/use-site-settings"
 
 interface HeaderProps {
   user?: { id?: string; email?: string; name?: string | null; company_name?: string | null; whatsapp?: string | null; country?: string | null; role?: string | null } | null
@@ -33,6 +35,7 @@ export function Header({ user }: HeaderProps) {
   const [searchOpen, setSearchOpen] = useState(false)
   const { totalItems, isLoaded } = useCart()
   const { t } = useStorefrontI18n()
+  const { settings } = useSiteSettings()
 
   const navItems = [
     { href: "/", label: t.common.home },
@@ -53,7 +56,7 @@ export function Header({ user }: HeaderProps) {
             <span className="hidden sm:inline text-white/85">{t.hero.minOrder} · {t.hero.customLogo} · {t.features.delivery}</span>
           </div>
           <a 
-            href="https://wa.me/8618888888888" 
+            href={`https://wa.me/${settings.whatsapp_number || "8618888888888"}`} 
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 bg-[#25D366] hover:bg-[#128C7E] px-3 py-1 rounded-full transition-colors font-medium"
@@ -65,12 +68,25 @@ export function Header({ user }: HeaderProps) {
       </div>
 
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
-        {/* Logo - Soft Blue */}
+        {/* Logo - 支持自定义Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#5B8FB9] to-[#7AB8B8] transition-transform group-hover:scale-105 shadow-sm">
-            <Package className="h-5 w-5 text-white" />
-          </div>
-          <span className="text-lg font-semibold text-foreground hidden sm:inline">{t.hero.title}{t.hero.subtitle}</span>
+          {settings.logo_url ? (
+            <Image
+              src={settings.logo_url}
+              alt={settings.site_name || "Logo"}
+              width={160}
+              height={40}
+              className="h-9 w-auto object-contain transition-transform group-hover:scale-105"
+              priority
+            />
+          ) : (
+            <>
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#5B8FB9] to-[#7AB8B8] transition-transform group-hover:scale-105 shadow-sm">
+                <Package className="h-5 w-5 text-white" />
+              </div>
+              <span className="text-lg font-semibold text-foreground hidden sm:inline">{settings.site_name || "MenswearWholesale"}</span>
+            </>
+          )}
         </Link>
 
         {/* Desktop Nav */}
