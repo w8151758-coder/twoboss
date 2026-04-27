@@ -12,6 +12,8 @@ interface SignUpParams {
   companyName?: string
   whatsapp?: string
   country?: string
+  budget?: string
+  website?: string
 }
 
 interface SignInParams {
@@ -54,6 +56,8 @@ export async function signUp(params: SignUpParams) {
         company_name: params.companyName,
         whatsapp: params.whatsapp,
         country: params.country,
+        budget: params.budget,
+        website: params.website,
         role: "customer",
       },
     },
@@ -72,6 +76,8 @@ export async function signUp(params: SignUpParams) {
         company_name: params.companyName,
         whatsapp: params.whatsapp,
         country: params.country,
+        budget: params.budget,
+        website: params.website,
       })
       .eq("id", data.user.id)
   }
@@ -193,6 +199,8 @@ export async function updateProfile(data: {
   companyName?: string
   whatsapp?: string
   country?: string
+  budget?: string
+  website?: string
 }) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -208,6 +216,8 @@ export async function updateProfile(data: {
       company_name: data.companyName,
       whatsapp: data.whatsapp,
       country: data.country,
+      budget: data.budget,
+      website: data.website,
       updated_at: new Date().toISOString(),
     })
     .eq("id", user.id)

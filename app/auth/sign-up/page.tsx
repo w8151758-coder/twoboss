@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { Package, Eye, EyeOff } from "lucide-react"
+import { Package, Eye, EyeOff, User, Mail, Phone, Building2, Globe, MapPin, DollarSign } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -20,16 +20,18 @@ export default function SignUpPage() {
     password: "",
     confirmPassword: "",
     name: "",
-    companyName: "",
     whatsapp: "",
+    companyName: "",
     country: "",
+    budget: "",
+    website: "",
   })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!formData.email || !formData.password || !formData.name) {
-      toast.error("请填写必填项")
+    if (!formData.email || !formData.password || !formData.name || !formData.whatsapp || !formData.country || !formData.budget) {
+      toast.error("请填写所有必填项")
       return
     }
 
@@ -51,6 +53,8 @@ export default function SignUpPage() {
         companyName: formData.companyName,
         whatsapp: formData.whatsapp,
         country: formData.country,
+        budget: formData.budget,
+        website: formData.website,
       })
 
       if (result.success) {
@@ -70,7 +74,7 @@ export default function SignUpPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted/50 px-4 py-12">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-lg">
         <CardHeader className="text-center">
           <Link href="/" className="mx-auto mb-4 flex items-center gap-2">
             <Package className="h-8 w-8 text-primary" />
@@ -83,59 +87,112 @@ export default function SignUpPage() {
         <form onSubmit={handleSubmit}>
           <CardContent>
             <FieldGroup>
+              {/* 姓名 */}
               <Field>
-                <FieldLabel>邮箱 *</FieldLabel>
+                <FieldLabel className="flex items-center gap-1">
+                  <User className="h-3.5 w-3.5" />
+                  您的姓名 <span className="text-destructive">*</span>
+                </FieldLabel>
                 <Input
-                  type="email"
-                  placeholder="your@email.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                />
-              </Field>
-
-              <Field>
-                <FieldLabel>姓名 *</FieldLabel>
-                <Input
-                  placeholder="您的姓名"
+                  placeholder="请输入您的姓名"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
                 />
               </Field>
 
+              {/* 邮箱和WhatsApp */}
+              <div className="grid grid-cols-2 gap-4">
+                <Field>
+                  <FieldLabel className="flex items-center gap-1">
+                    <Mail className="h-3.5 w-3.5" />
+                    邮箱 <span className="text-destructive">*</span>
+                  </FieldLabel>
+                  <Input
+                    type="email"
+                    placeholder="your@email.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    required
+                  />
+                </Field>
+
+                <Field>
+                  <FieldLabel className="flex items-center gap-1">
+                    <Phone className="h-3.5 w-3.5" />
+                    WhatsApp <span className="text-destructive">*</span>
+                  </FieldLabel>
+                  <Input
+                    type="tel"
+                    placeholder="+86 138 8888 8888"
+                    value={formData.whatsapp}
+                    onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
+                    required
+                  />
+                </Field>
+              </div>
+
+              {/* 公司名称 */}
               <Field>
-                <FieldLabel>公司名称</FieldLabel>
+                <FieldLabel className="flex items-center gap-1">
+                  <Building2 className="h-3.5 w-3.5" />
+                  公司名称（选填）
+                </FieldLabel>
                 <Input
-                  placeholder="公司名称（选填）"
+                  placeholder="您的公司名称"
                   value={formData.companyName}
                   onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
                 />
               </Field>
 
+              {/* 国家/地区和预算范围 */}
               <div className="grid grid-cols-2 gap-4">
                 <Field>
-                  <FieldLabel>WhatsApp</FieldLabel>
+                  <FieldLabel className="flex items-center gap-1">
+                    <MapPin className="h-3.5 w-3.5" />
+                    国家/地区 <span className="text-destructive">*</span>
+                  </FieldLabel>
                   <Input
-                    type="tel"
-                    placeholder="+86 xxx"
-                    value={formData.whatsapp}
-                    onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
+                    placeholder="如：中国"
+                    value={formData.country}
+                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                    required
                   />
                 </Field>
 
                 <Field>
-                  <FieldLabel>国家/地区</FieldLabel>
+                  <FieldLabel className="flex items-center gap-1">
+                    <DollarSign className="h-3.5 w-3.5" />
+                    预算范围 <span className="text-destructive">*</span>
+                  </FieldLabel>
                   <Input
-                    placeholder="您所在地区"
-                    value={formData.country}
-                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                    placeholder="如：$5000-10000"
+                    value={formData.budget}
+                    onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                    required
                   />
                 </Field>
               </div>
 
+              {/* 公司网站 */}
               <Field>
-                <FieldLabel>密码 *</FieldLabel>
+                <FieldLabel className="flex items-center gap-1">
+                  <Globe className="h-3.5 w-3.5" />
+                  公司网站（选填）
+                </FieldLabel>
+                <Input
+                  type="url"
+                  placeholder="https://www.example.com"
+                  value={formData.website}
+                  onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                />
+              </Field>
+
+              {/* 密码 */}
+              <Field>
+                <FieldLabel className="flex items-center gap-1">
+                  密码 <span className="text-destructive">*</span>
+                </FieldLabel>
                 <div className="relative">
                   <Input
                     type={showPassword ? "text" : "password"}
@@ -156,8 +213,11 @@ export default function SignUpPage() {
                 </div>
               </Field>
 
+              {/* 确认密码 */}
               <Field>
-                <FieldLabel>确认密码 *</FieldLabel>
+                <FieldLabel className="flex items-center gap-1">
+                  确认密码 <span className="text-destructive">*</span>
+                </FieldLabel>
                 <Input
                   type="password"
                   placeholder="再次输入密码"
@@ -167,6 +227,10 @@ export default function SignUpPage() {
                 />
               </Field>
             </FieldGroup>
+
+            <p className="mt-4 text-xs text-muted-foreground text-center bg-accent/50 p-3 rounded-lg">
+              注册后，您可以使用邮箱登录用户中心查看报价进度。
+            </p>
           </CardContent>
 
           <CardFooter className="flex flex-col gap-4">
