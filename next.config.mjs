@@ -4,9 +4,6 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // 启用React Compiler优化
-  reactCompiler: true,
-  
   images: {
     remotePatterns: [
       {
