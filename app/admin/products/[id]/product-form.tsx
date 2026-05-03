@@ -78,7 +78,7 @@ export function ProductForm({
     category_id: product?.category_id || "",
     base_price: product?.base_price || 0,
     unit: product?.unit || "件",
-    min_order_qty: product?.min_order_qty || 1,
+    min_order_qty: product?.min_order_qty || 0,
     is_active: product?.is_active ?? true,
   })
 
@@ -287,14 +287,7 @@ export function ProductForm({
                   />
                 </Field>
 
-                <Field>
-                  <FieldLabel>最小起订量</FieldLabel>
-                  <Input
-                    type="number"
-                    value={formData.min_order_qty}
-                    onChange={(e) => setFormData({ ...formData, min_order_qty: Number(e.target.value) })}
-                  />
-                </Field>
+
               </div>
             </FieldGroup>
           </CardContent>
