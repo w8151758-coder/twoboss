@@ -1,0 +1,408 @@
+
+> my-project@0.1.0 dev /home/ubuntu/twoboss
+> next dev --port 3000
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://169.254.0.21:3000
+✓ Ready in 475ms
+⚠ Invalid next.config.mjs options detected: 
+⚠     Unrecognized key(s) in object: 'optimizePackageImports'
+⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+Warning: Custom Cache-Control headers detected for the following routes:
+  - /_next/static/:path*
+
+Setting a custom Cache-Control header can break Next.js development behavior.
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+- Experiments (use with caution):
+  ✓ optimizeCss
+
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (lib/supabase/middleware.ts:9:38)
+    at middleware (middleware.ts:7:39)
+   7 |   })
+   8 |
+>  9 |   const supabase = createServerClient(
+     |                                      ^
+  10 |     process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  11 |     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  12 |     {
+⨯ Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/next-server/pages-turbo.runtime.dev.js
+- /home/ubuntu/twoboss/.next/dev/server/chunks/ssr/[externals]__12~~src._.js
+- /home/ubuntu/twoboss/.next/dev/server/chunks/ssr/[turbopack]_runtime.js
+- /home/ubuntu/twoboss/.next/dev/server/pages/_document.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/require.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/build/utils.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/router-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/next-server/pages-turbo.runtime.dev.js',
+    '/home/ubuntu/twoboss/.next/dev/server/chunks/ssr/[externals]__12~~src._.js',
+    '/home/ubuntu/twoboss/.next/dev/server/chunks/ssr/[turbopack]_runtime.js',
+    '/home/ubuntu/twoboss/.next/dev/server/pages/_document.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/require.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/build/utils.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/router-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+⨯ Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/next-server/pages-turbo.runtime.dev.js
+- /home/ubuntu/twoboss/.next/dev/server/chunks/ssr/[externals]__12~~src._.js
+- /home/ubuntu/twoboss/.next/dev/server/chunks/ssr/[turbopack]_runtime.js
+- /home/ubuntu/twoboss/.next/dev/server/pages/_document.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/require.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/build/utils.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/router-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/next-server/pages-turbo.runtime.dev.js',
+    '/home/ubuntu/twoboss/.next/dev/server/chunks/ssr/[externals]__12~~src._.js',
+    '/home/ubuntu/twoboss/.next/dev/server/chunks/ssr/[turbopack]_runtime.js',
+    '/home/ubuntu/twoboss/.next/dev/server/pages/_document.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/require.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/build/utils.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/router-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+⨯ Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+⨯ TypeError: __webpack_require__(...) is not a constructor
+    at ignore-listed frames
+⨯ TypeError: __webpack_require__(...) is not a constructor
+    at ignore-listed frames
+⨯ Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+⨯ TypeError: __webpack_require__(...) is not a constructor
+    at ignore-listed frames
+⨯ TypeError: __webpack_require__(...) is not a constructor
+    at ignore-listed frames
+⨯ Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ HEAD / 500 in 2.3s (next.js: 191ms, proxy.ts: 2.1s, application-code: 72ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (lib/supabase/middleware.ts:9:38)
+    at middleware (middleware.ts:7:39)
+   7 |   })
+   8 |
+>  9 |   const supabase = createServerClient(
+     |                                      ^
+  10 |     process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  11 |     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  12 |     {
+⨯ TypeError: __webpack_require__(...) is not a constructor
+    at ignore-listed frames
+⨯ TypeError: __webpack_require__(...) is not a constructor
+    at ignore-listed frames
+⨯ Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+⨯ TypeError: __webpack_require__(...) is not a constructor
+    at ignore-listed frames
+⨯ TypeError: __webpack_require__(...) is not a constructor
+    at ignore-listed frames
+⨯ Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+⨯ TypeError: __webpack_require__(...) is not a constructor
+    at ignore-listed frames
+⨯ TypeError: __webpack_require__(...) is not a constructor
+    at ignore-listed frames
+⨯ Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+Error: Cannot find module 'critters'
+Require stack:
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js
+- /home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/post-process.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/render.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/module.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/pages/builtin/_error.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/load-default-error-components.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next.js',
+    '/home/ubuntu/twoboss/node_modules/.pnpm/next@16.2.4_@opentelemetry+api@1.9.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ GET / 500 in 741ms (next.js: 179ms, proxy.ts: 494ms, application-code: 68ms)
