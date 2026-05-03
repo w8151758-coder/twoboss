@@ -7,7 +7,7 @@ export default {
     help: 'Help Center',
     blog: 'Blog',
     contact: 'Contact',
-    login: 'Login',
+    login: 'Become a Distributor',
     register: 'Register',
     logout: 'Logout',
     inquiryCart: 'Inquiry Cart',

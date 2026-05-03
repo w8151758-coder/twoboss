@@ -7,7 +7,7 @@ export default {
     help: '帮助中心',
     blog: '新闻博客',
     contact: '联系我们',
-    login: '登录',
+    login: '成为分销商',
     register: '注册',
     logout: '退出登录',
     inquiryCart: '询价车',
