@@ -54,14 +54,14 @@ const PLATFORM_TEMPLATES = {
   },
   shopify: {
     name: "Shopify",
-    nameField: ["Title", "title", "Handle"],
-    skuField: ["Variant SKU", "SKU", "sku"],
+    nameField: ["Title", "title", "Handle", "handle"],
+    skuField: ["Variant SKU", "SKU", "sku", "Variant Barcode"],
     descField: ["Body (HTML)", "Body", "Description"],
     priceField: ["Variant Price", "Price", "price"],
     categoryField: ["Type", "Product Type", "product_type"],
     imageField: ["Image Src", "Image", "image_src"],
-    colorField: ["Option1 Value", "Color"],
-    sizeField: ["Option2 Value", "Size"],
+    colorField: ["Option1 Value", "Color", "Option 1 Value"],
+    sizeField: ["Option2 Value", "Size", "Option 2 Value"],
   },
   woocommerce: {
     name: "WooCommerce",
