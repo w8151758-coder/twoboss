@@ -534,7 +534,31 @@ export default function ProductImportPage() {
                 <p className="text-xs text-muted-foreground">{text.supportFormats}</p>
               </div>
 
+              {/* 备用文件选择按钮 - 确保在 dropzone 失效时仍可上传 */}
               <div className="mt-4">
+                <input
+                  type="file"
+                  id="fallback-file-input"
+                  accept=".csv,.xls,.xlsx"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0]
+                    if (file) {
+                      onDrop([file])
+                    }
+                  }}
+                />
+                <Button
+                  variant="default"
+                  className="w-full mb-3"
+                  onClick={() => document.getElementById('fallback-file-input')?.click()}
+                >
+                  <Upload className="mr-2 h-4 w-4" />
+                  {locale === 'zh' ? '点击选择文件上传' : 'Click to Select File'}
+                </Button>
+              </div>
+
+              <div>
                 <Button variant="outline" className="w-full" asChild>
                   <a href="/templates/product-import-template.csv" download>
                     <Download className="mr-2 h-4 w-4" />
