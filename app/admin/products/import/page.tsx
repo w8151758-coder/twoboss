@@ -225,49 +225,75 @@ export default function ProductImportPage() {
   const text = t[locale as keyof typeof t] || t.zh
 
   // 文件上传处理
-  const onDrop = useCallback((acceptedFiles: File[]) => {
+  const onDrop = useCallback(async (acceptedFiles: File[]) => {
     const file = acceptedFiles[0]
     if (!file) return
 
-    const reader = new FileReader()
-    
-    if (file.name.endsWith(".csv")) {
-      reader.onload = (e) => {
-        const text = e.target?.result as string
-        Papa.parse(text, {
-          header: true,
-          skipEmptyLines: true,
-          complete: (results) => {
-            setHeaders(results.meta.fields || [])
-            setRawData(results.data)
-            autoMapFields(results.meta.fields || [])
-            setStep("mapping")
-          },
-        })
-      }
-      reader.readAsText(file)
-    } else {
-      // Excel 处理
-      import("xlsx").then((XLSX) => {
+    try {
+      const reader = new FileReader()
+      
+      if (file.name.endsWith(".csv")) {
         reader.onload = (e) => {
-          const data = new Uint8Array(e.target?.result as ArrayBuffer)
-          const workbook = XLSX.read(data, { type: "array" })
-          const sheetName = workbook.SheetNames[0]
-          const worksheet = workbook.Sheets[sheetName]
-          const jsonData = XLSX.utils.sheet_to_json(worksheet)
-          
-          if (jsonData.length > 0) {
-            const fields = Object.keys(jsonData[0] as object)
-            setHeaders(fields)
-            setRawData(jsonData)
-            autoMapFields(fields)
-            setStep("mapping")
+          try {
+            const text = e.target?.result as string
+            Papa.parse(text, {
+              header: true,
+              skipEmptyLines: true,
+              complete: (results) => {
+                setHeaders(results.meta.fields || [])
+                setRawData(results.data)
+                autoMapFields(results.meta.fields || [])
+                setStep("mapping")
+              },
+              error: (error: Error) => {
+                toast.error(locale === "zh" ? "CSV解析失败: " + error.message : "CSV parse failed: " + error.message)
+              }
+            })
+          } catch (error) {
+            toast.error(locale === "zh" ? "文件处理失败" : "File processing failed")
           }
         }
-        reader.readAsArrayBuffer(file)
-      })
+        reader.onerror = () => {
+          toast.error(locale === "zh" ? "文件读取失败" : "File read failed")
+        }
+        reader.readAsText(file)
+      } else {
+        // Excel 处理
+        try {
+          const XLSX = await import("xlsx")
+          reader.onload = (e) => {
+            try {
+              const data = new Uint8Array(e.target?.result as ArrayBuffer)
+              const workbook = XLSX.read(data, { type: "array" })
+              const sheetName = workbook.SheetNames[0]
+              const worksheet = workbook.Sheets[sheetName]
+              const jsonData = XLSX.utils.sheet_to_json(worksheet)
+              
+              if (jsonData.length > 0) {
+                const fields = Object.keys(jsonData[0] as object)
+                setHeaders(fields)
+                setRawData(jsonData)
+                autoMapFields(fields)
+                setStep("mapping")
+              } else {
+                toast.error(locale === "zh" ? "文件为空或格式不正确" : "File is empty or invalid format")
+              }
+            } catch (error) {
+              toast.error(locale === "zh" ? "Excel解析失败" : "Excel parse failed")
+            }
+          }
+          reader.onerror = () => {
+            toast.error(locale === "zh" ? "文件读取失败" : "File read failed")
+          }
+          reader.readAsArrayBuffer(file)
+        } catch (error) {
+          toast.error(locale === "zh" ? "无法加载Excel解析器" : "Failed to load Excel parser")
+        }
+      }
+    } catch (error) {
+      toast.error(locale === "zh" ? "文件处理出错" : "File processing error")
     }
-  }, [platform])
+  }, [platform, locale])
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -318,31 +344,45 @@ export default function ProductImportPage() {
 
   // 处理映射确认，进入预览
   const handleMappingConfirm = async () => {
-    // 将原始数据转换为产品列表
-    const parsedProducts: ParsedProduct[] = rawData.map((row, index) => ({
-      id: `import-${index}`,
-      name: row[fieldMapping.name] || "",
-      sku: row[fieldMapping.sku] || `SKU-${Date.now()}-${index}`,
-      description: row[fieldMapping.description] || "",
-      price: row[fieldMapping.price] || "0",
-      category: row[fieldMapping.category] || "",
-      image: row[fieldMapping.image] || "",
-      color: row[fieldMapping.color] || "",
-      size: row[fieldMapping.size] || "",
-      selected: true,
-      status: "pending",
-    })).filter(p => p.name) // 过滤掉没有名称的行
+    try {
+      // 将原始数据转换为产品列表
+      const parsedProducts: ParsedProduct[] = rawData.map((row, index) => ({
+        id: `import-${index}`,
+        name: row[fieldMapping.name] || "",
+        sku: row[fieldMapping.sku] || `SKU-${Date.now()}-${index}`,
+        description: row[fieldMapping.description] || "",
+        price: row[fieldMapping.price] || "0",
+        category: row[fieldMapping.category] || "",
+        image: row[fieldMapping.image] || "",
+        color: row[fieldMapping.color] || "",
+        size: row[fieldMapping.size] || "",
+        selected: true,
+        status: "pending",
+      })).filter(p => p.name) // 过滤掉没有名称的行
 
-    setProducts(parsedProducts)
-    
-    // 获取现有分类
-    const response = await fetch("/api/admin/categories")
-    if (response.ok) {
-      const data = await response.json()
-      setExistingCategories(data.categories || [])
+      if (parsedProducts.length === 0) {
+        toast.error(locale === "zh" ? "没有找到有效的产品数据" : "No valid product data found")
+        return
+      }
+
+      setProducts(parsedProducts)
+      
+      // 获取现有分类
+      try {
+        const response = await fetch("/api/admin/categories")
+        if (response.ok) {
+          const data = await response.json()
+          setExistingCategories(data.categories || [])
+        }
+      } catch (error) {
+        // 忽略分类获取失败，继续导入流程
+        console.warn("Failed to fetch categories")
+      }
+      
+      setStep("preview")
+    } catch (error) {
+      toast.error(locale === "zh" ? "数据处理失败" : "Data processing failed")
     }
-    
-    setStep("preview")
   }
 
   // AI 分析分类
@@ -389,57 +429,80 @@ export default function ProductImportPage() {
 
   // 开始导入
   const handleImport = async () => {
+    const selectedProducts = products.filter(p => p.selected)
+    
+    if (selectedProducts.length === 0) {
+      toast.error(locale === "zh" ? "请选择要导入的产品" : "Please select products to import")
+      return
+    }
+
     setStep("importing")
     setImportProgress(0)
 
-    const selectedProducts = products.filter(p => p.selected)
     const total = selectedProducts.length
 
     try {
       // 先创建新分类
       if (newCategories.length > 0) {
-        await fetch("/api/admin/categories/batch", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ categories: newCategories }),
-        })
+        try {
+          await fetch("/api/admin/categories/batch", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ categories: newCategories }),
+          })
+        } catch (error) {
+          console.warn("Failed to create categories, continuing with import")
+        }
       }
 
       // 批量导入产品
       let imported = 0
+      let failed = 0
       const batchSize = 10
 
       for (let i = 0; i < selectedProducts.length; i += batchSize) {
         const batch = selectedProducts.slice(i, i + batchSize)
         
-        const response = await fetch("/api/admin/products/batch-import", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            products: batch.map(p => ({
-              name: p.name,
-              sku: p.sku,
-              description: p.description,
-              category: p.suggestedCategory || p.category,
-              image: p.image,
-              colors: p.color ? p.color.split(",").map(c => c.trim()) : [],
-              sizes: p.size ? p.size.split(",").map(s => s.trim()) : [],
-            })),
-          }),
-        })
+        try {
+          const response = await fetch("/api/admin/products/batch-import", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              products: batch.map(p => ({
+                name: p.name,
+                sku: p.sku,
+                description: p.description,
+                category: p.suggestedCategory || p.category,
+                image: p.image,
+                colors: p.color ? p.color.split(",").map(c => c.trim()) : [],
+                sizes: p.size ? p.size.split(",").map(s => s.trim()) : [],
+              })),
+            }),
+          })
 
-        if (response.ok) {
-          const result = await response.json()
-          imported += result.imported || batch.length
+          if (response.ok) {
+            const result = await response.json()
+            imported += result.imported || batch.length
+          } else {
+            failed += batch.length
+          }
+        } catch (error) {
+          failed += batch.length
         }
 
         setImportProgress(Math.round(((i + batch.length) / total) * 100))
       }
 
       setStep("complete")
-      toast.success(text.importSuccess.replace("{count}", imported.toString()))
+      if (failed > 0) {
+        toast.warning(locale === "zh" 
+          ? `导入完成: 成功 ${imported} 个, 失败 ${failed} 个` 
+          : `Import complete: ${imported} succeeded, ${failed} failed`)
+      } else {
+        toast.success(text.importSuccess.replace("{count}", imported.toString()))
+      }
     } catch (error) {
-      toast.error(locale === "zh" ? "导入失败" : "Import failed")
+      toast.error(locale === "zh" ? "导入过程中出错" : "Error during import")
       setStep("preview")
     }
   }
